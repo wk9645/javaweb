@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+     
+     
+ 	<!-- 配置dao实例 -->    
+  	<bean id="userDao" class="com.wk.xml.UserDao"></bean>
+  	
+  	<!-- 配置AOP实例 -->
+ 	<bean id="aop" class="com.wk.xml.Aop"></bean>
+ 	
+ 	<!-- 配置aop -->
+ 	<aop:config>
+ 		<!-- 定义一个切入点表达式 -->
+ 		<aop:pointcut expression="execution(* com.wk.annotation.*.*(..))" id="pc"/>
+ 		
+ 		<!-- 配置aspect -->
+ 		<aop:aspect ref="aop">
+ 			<aop:before method="begin" pointcut-ref="pc"/>
+ 			<aop:after method="after" pointcut-ref="pc"/>
+ 		</aop:aspect>
+ 	</aop:config>
+     
+ </beans>

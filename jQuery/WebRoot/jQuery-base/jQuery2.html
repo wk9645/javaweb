@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery1.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	
+	<!--jquery库 -->
+  <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+  
+  </head>
+  
+  <body>
+  		<div>hehe</div>
+  		<form id="formId">
+ 	 		<input id="inputId"/>
+ 	 		<table>
+  				<tr>
+  					<td>
+  						<input id="inputId"/>
+  					</td>
+  				</tr>
+  			</table>	
+  		</form>
+  		<input id="inputId" class="inputClass" value="123"/>
+  		<input id="inputId" class="inputClass" value="455"/>
+  		<input id="inputId"/>
+  		<span></span>
+  		<script>
+  		
+  			/*
+  				一、基本选择器
+  			*/
+  		
+  			//1、获取id为inputId的元素个数
+  			//alert( $("#inputId").size() );      //1
+  		
+  		
+  			//2、查找div元素个数
+  			//alert( $("div").size() );           //1
+  			
+  			//3、查找所有样式为inputClass的元素个数
+  			//alert( $(".inputClass").size());     //2
+			
+			//4、查找所有为input、form或span元素个数
+			//alert($("input,span,form").size());     //7
+			
+			  		
+  		</script>
+
+
+  		<script>
+  		
+  			/*
+  				二、层次选择器
+  			*/
+  		
+  			//1、找到表单form里所有的input元素的个数
+  			//alert( $("form input").size() );      //2
+  		
+  		
+  			//2、找到表单form里所有的子级input元素个数
+  			//alert( $("form>input").size() );           //1
+  			
+  			//3、找到表单form同级第一个input元素的value属性值
+  			//alert( $("form+input").val());     //1
+			
+			//4、找到所有与表单form同级的input元素个数(只能向下获取)
+			alert($("form~input").size());     //3
+			
+  		</script>
+  		
+  		
+  
+  </body>
+</html>

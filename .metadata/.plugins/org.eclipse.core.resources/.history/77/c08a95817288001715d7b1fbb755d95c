@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	<environments default="mysql_development">
+		
+		<!-- 
+		<!-- 配置mysql连接 
+		<environment id="mysql_development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>	
+				<property name="url" value="jdbc:mysql:///test"/>	
+				<property name="username" value="wk"/>	
+				<property name="password" value="199645"/>	
+			</dataSource>
+		</environment> 
+		-->
+		
+		<!-- oracle配置连接 
+		<environment id="oracle_development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="${oracle.driver}"/>	
+				<property name="url" value="${oracle.url}"/>	
+				<property name="username" value="${oracle.username}"/>	
+				<property name="password" value="${oracle.password}"/>	
+			</dataSource>
+		</environment>
+		
+		-->	
+	</environments>
+	
+	
+	<!-- 导入映射文件 -->
+	<mappers>
+		<mapper resource="com/wk/mybatis01/studentMapping.xml"/>
+	</mappers>
+	
+</configuration>    

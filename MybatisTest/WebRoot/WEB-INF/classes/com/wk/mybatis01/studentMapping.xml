@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 命名空间 -->
+<mapper namespace="com.wk.mybatis01.Student">
+	
+	
+	<!-- 配置类型别名 -->
+	
+	
+	
+	<!-- 
+		resultMap：映射实体与表
+		type：具体的类
+		id:该映射的一个唯一的名字
+	 -->
+	<resultMap type="com.wk.mybatis01.Student" id="studentMap">
+		<!-- 主键映射 -->
+		<id property="id" column="id"/>
+		
+		<!-- 非主键映射 -->
+		<result property="name" column="name"/>
+		<result property="salary" column="salary"/>
+	</resultMap>
+	
+
+	<!-- 
+		insert:单条sql语句
+		id：sql唯一名字
+		parameterType：要执行dao的方法参数，如果是类写出类的全限定名
+	 -->
+	<insert id="add1">
+		insert into student(id,name,salary) values(1,'张三', 6000.0)
+	</insert>
+	
+	<insert id="add2" parameterType="com.wk.mybatis01.Student" >
+		insert into student(id,name,salary) values(#{id},#{name},#{salary})
+	</insert>
+	
+	
+	<!-- 查询所有学生 -->
+	<select id="findAll"  resultType="com.wk.mybatis01.Student" >
+		select * from student
+	</select>
+	
+	
+	<!-- 删除学生 -->
+	<delete id="delete" parameterType="int">
+		delete from student where id=#{id}
+ 	</delete>
+	
+	<!-- 更新 -->
+	<update id="update"  parameterType="com.wk.mybatis01.Student" >
+		update student set name=#{name},salary=#{salary} where id=#{id} 
+	</update>
+	
+	
+	<!-- 分页查询 -->
+	<select id="findByFy" resultMap="studentMap" parameterType="map">
+		select id,name,salary from student limit #{k_start},#{k_size}
+	</select>
+	
+	<!--动态查询  -->
+	<select id="findByOption" resultMap="studentMap" parameterType="map">
+		select id,name,salary from student
+		<where>
+			<if test="k_id!=null">
+				and id=#{k_id}
+			</if>
+			<if test="k_name!=null">
+				and name like #{k_name}
+			</if>
+			<if test="k_salary!=null">
+				and salary=#{k_salary}
+			</if>
+		</where>
+	</select>
+	
+	
+	<!-- 动态更新 -->
+	<update id="updateByOption" parameterType="map">
+		update student
+		<set>	
+			<if test="k_name!=null">
+				name=#{k_name},
+			</if>
+			<if test="k_salary!=null">
+				salary=#{k_salary},
+			</if>
+		</set>
+			where id=#{k_id}
+	</update>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteByOption">
+		delete from student where id in 
+		<!-- 
+			collection:指数组类型
+			open:指开始符号
+			close:指结束符号
+			separator:指元素键的分隔符
+			item:指要迭代的数组
+		 -->
+		<foreach collection="array" open="(" close=")" separator="," item="ids">
+			#{ids}
+		</foreach>
+	</delete>
+	
+	<!-- 动态添加 -->
+	
+	<!-- sql片段 -->
+	<sql id="key">
+		<trim suffixOverrides=",">
+			<if test="id!=null">
+				id,
+			</if>
+			<if test="name!=null">
+				name,
+			</if>
+			<if test="salary!=null">
+				salary,
+			</if>
+		</trim>
+	</sql>
+	
+	<sql id="value">
+		<trim suffixOverrides=",">
+			<if test="id!=null">
+				#{id},
+			</if>
+			<if test="name!=null">
+				#{name},
+			</if>
+			<if test="salary!=null">
+				#{salary},
+			</if>
+		</trim>
+	</sql>
+	
+	
+	<insert id="addByOption" parameterType="com.wk.mybatis01.Student">
+		insert into student (<include refid="key"/>) values (<include refid="value"/>)
+	</insert>
+	
+	
+</mapper>

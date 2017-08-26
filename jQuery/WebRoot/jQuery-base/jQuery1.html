@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jquery对象</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	
+	<!--jquery库 -->
+  <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+  
+  </head>
+  
+  <body>
+  
+  		<input id="inputId" value="123456" type="text"/>
+  		<div id="divId">hello world!</div>
+  		
+  		<script type="text/javascript">
+  		
+  			
+  			//1、获取input标签中value的值
+  		/*  
+  			//js获取
+  			var inputElem = document.getElementById("inputId");
+  			var value = inputElem.value;
+  			alert(value); 
+  		*/	
+  			
+  	
+		/* 
+  			//jquery获取
+			var $input = $("#inputId");    //js对象转换为jquery对象
+			var value = $input.val();
+			alert(value);
+		*/
+  		</script>
+  		
+  		
+  		<script type="text/javascript">
+  		
+  			
+  			//2、获取标签中的文本
+  			
+  		/* 	
+  			//js获取
+  			var divElem = document.getElementById("divId");
+  			var value = divElem.innerHTML;
+  			alert(value); 
+ 		*/
+ 		
+  		/* 	
+  			//jquery获取
+			var div =  $("#divId");
+			var value = div.html();
+			alert(value);
+		*/
+  		</script>
+  
+  		<script type="text/javascript">
+  		
+  			
+  			//3、jquery对象与js对象之间的转换
+  			
+  		/*	
+			//js对象转换为jquery对象
+			var divElem = document.getElementById("divId");
+			var $div = $(divElem);     
+  			var value = $div.html();
+			alert(value);
+	    */
+	    
+	    	//jquery对象转换为js对象
+	    	var $input = $("#inputId");
+	    	var inputElem = $input[0];
+	    	var value = inputElem.value;
+	    	alert(value);
+  		</script>
+  
+  </body>
+</html>

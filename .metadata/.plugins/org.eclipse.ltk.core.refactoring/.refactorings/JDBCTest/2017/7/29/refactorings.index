@@ -1,0 +1,12 @@
+1500189514345	Copy compilation unit
+1500189567389	Copy compilation unit
+1500189680892	Copy folder
+1500189829258	Copy compilation unit
+1500197868971	Copy file
+1500272655209	Extract local variable 'conn'
+1500275063427	Extract local variable 'conn1'
+1500283823944	Rename compilation unit 'DBPCTest.java'
+1500283910516	Extract local variable 'conn'
+1500288424084	Rename type 'c3p0Test'
+1500288709838	Extract local variable 'conn'
+1500369952112	Extract local variable 'methodName'

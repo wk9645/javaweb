@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	 http://www.springframework.org/schema/beans/spring-beans.xsd
+     	 http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx
+         http://www.springframework.org/schema/tx/spring-tx.xsd">
+     
+     
+ 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+ 		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+ 		<property name="jdbcUrl" value="jdbc:mysql:///test"></property>
+ 		<property name="user" value="wk"></property>
+ 		<property name="password" value="199645"></property>
+ 		<property name="initialPoolSize" value="3"></property>
+ 		<property name="maxPoolSize" value="10"></property>
+ 		<property name="maxStatements" value="100"></property>
+ 		<property name="acquireIncrement" value="2"></property>
+ 	</bean>	   
+ 	
+ 	<!-- dao实例 -->
+ 	<bean id="studentDao" class="com.wk.dao.StudentDao">
+ 		<property name="sessionFactory" ref="sessionFactory"></property>
+ 	</bean>
+ 	
+ 	<!-- service实例 -->
+ 	<bean id="studentService" class="com.wk.service.StudentService">
+ 		<property name="studentDao" ref="studentDao"></property>
+ 	</bean>
+ 	
+ 	
+ 	
+ 	<!-- spring与hibernate整合 -->
+ 	<!-- (1)连接池配置放在hibernate中-->
+ 	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+ 		<property name="configLocation" value="hibernate.cfg.xml"></property>
+ 	</bean> -->
+ 	
+ 	<!-- (2)连接池配置放在spring中 -->
+<!--  	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+ 		<property name="configLocation" value="hibernate.cfg.xml"></property>
+ 		<property name="dataSource" ref="dataSource"></property>
+ 	</bean>
+ --> 	
+ 	<!-- (3)所有配置放在spring中-->
+ 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+ 		<property name="configLocation" value="mybatis.xml"></property>
+ 		<property name="dataSource" ref="dataSource"></property>
+ 		
+ 		<!-- hibernate其他配置 -->
+    	<property name="hibernateProperties">
+    		<props>
+    			<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+    			<prop key="hibernate.show_sql">true</prop>
+    			<prop key="hibernate.hbm2ddl.auto">update</prop>
+    		</props>
+    	</property>
+    	
+    	
+    	<!-- 映射配置 -->
+    	<!-- <property name="mappingLocations">
+    		<list>
+    			<value>classPath:</value>
+    		</list>
+    	</property> -->
+ 	</bean>
+ 	
+ 	
+ 	<!-- 配置事务 -->
+ 	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+ 		<property name="sessionFactory" ref="sessionFactory"></property>
+ 	</bean>
+ 	
+ 	<!-- 配置增强事务 -->
+ 	<tx:advice id="txAdvice" transaction-manager="txManager">
+ 		<tx:attributes>
+ 			<tx:method name="*" read-only="false" propagation="REQUIRED"/>
+ 		</tx:attributes>
+ 	</tx:advice>
+ 	
+ 	<!-- aop配置 -->
+ 	
+ 	<aop:config>
+ 		<aop:pointcut expression="execution(* com.wk.service.*.*(..))" id="pc"/>
+ 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>
+ 	</aop:config>
+ </beans>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	 http://www.springframework.org/schema/beans/spring-beans.xsd
+     	 http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx
+         http://www.springframework.org/schema/tx/spring-tx.xsd">
+     
+	<!-- 1、配置连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+ 		<property name="jdbcUrl" value="jdbc:mysql:///project"></property>
+ 		<property name="user" value="wk"></property>
+ 		<property name="password" value="199645"></property>
+ 		<property name="initialPoolSize" value="3"></property>
+ 		<property name="maxPoolSize" value="10"></property>
+ 		<property name="maxStatements" value="100"></property>
+ 		<property name="acquireIncrement" value="2"></property>
+	</bean>
+	
+	<!-- 2、Spring管理SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		
+		<!-- 连接池其他配置 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+    			<prop key="hibernate.show_sql">true</prop>
+    			<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		
+		<!-- 配置映射 -->
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:com/wk/entity/*.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	    
+	<!-- 3、配置事务 --> 
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 事务增强 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="find*" read-only="true"/>
+    		<tx:method name="get*" read-only="true"/>
+    		<tx:method name="*" read-only="false"/>
+		</tx:attributes>
+	</tx:advice>
+	 
+	 <!-- 事务切入点 -->
+	 <aop:config>
+	 	<aop:pointcut expression="execution(* com.wk.service.impl.*.*(..))" id="pc"/>
+	 	<aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>
+	 </aop:config>
+	 
+	  
+</beans>

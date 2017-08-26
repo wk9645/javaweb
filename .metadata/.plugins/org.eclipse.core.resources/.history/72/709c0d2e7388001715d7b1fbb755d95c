@@ -1,0 +1,15 @@
+package com.wk.dao;
+
+import com.wk.entity.Student;
+
+public class StudentDao {
+
+	
+	public Student add(Student stu){
+		
+		
+		return null;
+	}
+	
+	
+}

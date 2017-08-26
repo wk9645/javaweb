@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+          
+<struts>
+
+	<include file="com/wk/struts2/save.xml"></include>	
+	<include file="com/wk/fileUpload/upload.xml"></include>	
+	<include file="com/wk/interceptor/interceptor.xml"></include>	
+	
+</struts>

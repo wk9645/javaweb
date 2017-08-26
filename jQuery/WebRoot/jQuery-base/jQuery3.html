@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery1.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	
+	<!--jquery库 -->
+  <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+  
+  </head>
+  
+  <body>
+  	<ul>
+	    <li>list item 1</li>
+	    <li>list item 2</li>
+	    <li>list item 3</li>
+	    <li>list item 4</li>
+	    <li>list item 5</li>
+	</ul>
+	
+	<input type="checkbox" checked/>
+	<input type="checkbox" checked/>
+	<input type="checkbox"/>
+	
+	<table border="1">
+	  <tr><td>line1[0]</td></tr>
+	  <tr><td>line2[1]</td></tr>
+	  <tr><td>line3[2]</td></tr>
+	  <tr><td>line4[3]</td></tr>
+	  <tr><td>line5[4]</td></tr>
+	  <tr><td>line6[5]</td></tr>
+	</table>	
+	
+	<h1>h1</h1>
+	<h2>h2</h2> 
+	<h3>h3</h3>
+	
+	<p>p</p>
+
+  		
+  		<script type="text/javascript">
+  		
+  			/*
+  				三、基本增强
+  			*/
+  		
+  		
+  			//1、查找UL中第一个元素的内容
+	 		//alert( $("ul li:first").html() );
+  			//alert( $("ul li:first").text() );
+  			
+  			//2、查找UL中最后个元素的内容
+	  		//alert( $("ul li:last").html() );
+	  		
+	  		//3、查找所有未选中的checked标签个数
+	  		//alert( $("input:not(:checked)").size() );
+	  		
+  			
+  			//3、查找表格的索引号为1、3、5...奇数行个数，索引号从0开始
+  			//alert( $("table tr:odd").size() );
+  			
+  			//4、查找表格的索引号为2、4、6...偶数行个数，索引号从0开始
+  			//alert( $("table tr:even").size() );
+
+
+  			//5、查找表格中第二行的内容，从索引号0开始，这是一种祖先 后代 的变化形式
+  			//alert( $("table tr:eq(1)").text() );   //line2[1]
+			//alert( $("table tr:eq(1)").html() );	 //<td>line2[1]</td>
+
+			//6、查找表格中第二第三行的个数，即索引值是1和2，也就是比0大
+  			//alert( $("table tr:gt(0)").size() );
+
+			//7、查找表格中第二第三行的个数，即索引值是1和2，也就是比0小
+  			//alert( $("table tr:lt(2)").size() );
+			
+			//8、给页面内所有标题<h1><h2><h3>加上红色背景色，且文字加蓝色
+  			//$(":header").css("background","#ff0000").css("color","blue");
+
+  		</script>
+  		
+  		<div><p>John Resig</p></div>
+		<div><p>George Martin</p></div>
+		<div>Malcom John Sinclair</div>
+		<div>J. Ohn</div>
+		<div></div>
+  		<p>&npbs;</p>
+  		<p></p>
+  		<script type="text/javascript">
+  		
+  			/*
+		  		4、内容选择器			
+  			*/
+  		
+  			//1、查找所有包含文本"John"的div元素的个数(外面双引号，里面单引号)
+  			//alert( $("div:contains('John')").size() );
+  			
+  			//2、查找所有p元素为空的元素个数(&npbs;有内容)
+  			//alert( $("p:empty").size() );
+  		
+  			//3、给所有包含p元素的div元素添加一个myClass样式
+  			//$("div:has(p)").addClass("myClass");
+  			
+  			
+  			//4、查找所有含有子元素或者文本的p元素个数,即p为父元素
+			alert( $("p:parent").size() );  			
+  			
+  			
+  		</script>
+  
+  </body>
+</html>

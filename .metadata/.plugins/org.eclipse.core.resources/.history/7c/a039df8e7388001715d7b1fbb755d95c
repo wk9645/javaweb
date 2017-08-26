@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 命名空间 -->
+<mapper namespace="com.wk.mybatis01.Student">
+	
+	
+	<!-- 配置类型别名 -->
+	
+	
+	
+	<!-- 
+		resultMap：映射实体与表
+		type：具体的类
+		id:该映射的一个唯一的名字
+	 -->
+	<resultMap type="com.wk.mybatis01.Student" id="studentMap">
+		<!-- 主键映射 -->
+		<id property="id" column="id"/>
+		
+		<!-- 非主键映射 -->
+		<result property="name" column="name"/>
+		<result property="sal" column="sal"/>
+	</resultMap>
+	
+
+	<insert id="add" parameterType="com.wk.mybatis01.Student">
+		insert into (id,name,sal) values (#{id},#{name},#{sal});
+	</insert>
+	
+	
+</mapper>

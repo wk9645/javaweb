@@ -1,0 +1,18 @@
+package com.wk;
+
+import org.jboss.weld.context.ApplicationContext;
+
+import com.wk.entity.Student;
+import com.wk.service.StudentService;
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+//		ApplicationContext ac = new XML
+		
+		service.register(new Student(1,"ะกร๗",45d));
+		
+	}
+	
+}

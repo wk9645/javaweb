@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- hibernate映射关系 
+ 对象所在包 -->
+  <hibernate-mapping package="com.wk.entity">
+ <!-- 对象名和数据表名 -->
+ <class name="Employee" table="employee">
+  <!-- 主键映射 --> 
+  <id name="id" column="empId" >
+   <generator class="native"/>
+  </id>
+  <!-- 非主键映射 -->
+  
+  <property name="empName"></property>
+  <property name="salary"></property>
+  
+  <!-- 外键，把name为dept的属性应映射到表中 -->
+ <many-to-one name="dept" column="dept_id" class="Dept" lazy="false"></many-to-one>  
+ </class>
+</hibernate-mapping>

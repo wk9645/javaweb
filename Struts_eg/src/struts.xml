@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+          
+<struts>
+
+
+	<package name="login" extends="struts-default">
+	
+		<!-- 全局配置 -->
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+		
+		
+		<action name="admin_*" class="com.wk.action.AdminAction" method="{1}">
+			<!-- 登陆失败 -->
+			<result name="input">/login.jsp</result>
+			<!-- 登录成功重定向到此Action的list方法用于提供数据 -->
+			<result name="loginSuccess" type="redirectAction">admin_list</result>
+			
+			<!-- list方法执行完转发到WEB-INF下的list.jsp -->
+			<result name="list">/WEB-INF/list.jsp</result>
+		</action>
+	
+	</package>	
+	
+</struts>

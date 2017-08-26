@@ -1,0 +1,20 @@
+package com.wk;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.wk.entity.Student;
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+		
+		ApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
+		ac.getBean("studentService");
+		
+		service.register(new Student(13,"ะกร๗",45d));
+		
+	}
+	
+}

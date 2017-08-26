@@ -1,0 +1,13 @@
+package com.wk.action;
+
+import org.springframework.stereotype.Component;
+
+
+
+@Component
+public class StudentAction {
+
+	
+	
+	
+}

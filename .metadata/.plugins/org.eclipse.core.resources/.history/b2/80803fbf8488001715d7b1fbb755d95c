@@ -1,0 +1,28 @@
+package com.wk.action;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.wk.service.StudentService;
+
+
+
+@Controller
+@RequestMapping(value="/student")
+public class StudentAction {
+
+	private StudentService studentService;
+	public void setStudentService(StudentService studentService) {
+		this.studentService = studentService;
+	}
+	
+	public String register() throws Exception{	
+		
+		
+		
+		
+		
+		return null;
+	}
+	
+}

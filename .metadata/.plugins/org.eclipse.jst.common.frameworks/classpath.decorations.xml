@@ -1,0 +1,12 @@
+<classpath>
+  <container id="HibernateTest!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="F:/workplace/myEclipse-workspace/HibernateTest/WebRoot/WEB-INF/lib/hibernate3.jar">
+      <source-attachment-path>F:/Java/Java依赖库/hibernate/hibernate-distribution-3.6.0.Final</source-attachment-path>
+    </entry>
+  </container>
+  <container id="framework!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="F:/workplace/myEclipse-workspace/framework/WebRoot/WEB-INF/lib/struts2-core-2.3.4.1.jar">
+      <source-attachment-path>G:/Java/传智播客/javaweb/day29_Struts的数据处理、上传/资料</source-attachment-path>
+    </entry>
+  </container>
+</classpath>

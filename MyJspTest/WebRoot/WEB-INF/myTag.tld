@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+    version="2.1">
+    
+	<!-- 标签库版本 -->    
+  <tlib-version>1.2</tlib-version>
+    <!-- 自定义标签库名称 -->
+  <short-name>wk</short-name>
+  <!-- 指定uri -->
+  <uri>http://java.tag.wk.com</uri>
+
+  <tag>
+	<!-- 标签名 -->
+    <name>mytag</name>
+    <!-- 标签处理类 -->
+    <tag-class>com.wk.mytag.MyTag</tag-class>
+    <!-- 输出标签内容格式 -->
+    <body-content>scriptless</body-content>
+  </tag>
+  
+  
+   <tag>
+	<!-- 标签名 -->
+    <name>ifout</name>
+    <!-- 标签处理类 -->
+    <tag-class>com.wk.mytag.MyTag</tag-class>
+    <!-- 输出标签内容格式 -->
+    <body-content>scriptless</body-content>
+  </tag>
+  
+  
+  
+  
+  <tag>
+	<!-- 标签名 -->
+    <name>choose</name>
+    <!-- 标签处理类 -->
+    <tag-class>com.wk.designTag.ChooseTag</tag-class>
+    <!-- 输出标签内容格式 -->
+    <body-content>scriptless</body-content>
+  </tag>
+  
+  
+  <tag>
+	<!-- 标签名 -->
+    <name>if</name>
+    <!-- 标签处理类 -->
+    <tag-class>com.wk.designTag.IfTag</tag-class>
+    <!-- 输出标签内容格式 -->
+    <body-content>scriptless</body-content>
+    <attribute>
+    	<name>test</name>
+    	<!-- 支持属性 -->
+    	<required>false</required>
+    	<!-- 支持EL表达式 -->
+    	<rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
+  
+  <tag>
+	<!-- 标签名 -->
+    <name>else</name>
+    <!-- 标签处理类 -->
+    <tag-class>com.wk.designTag.ElseTag</tag-class>
+    <!-- 输出标签内容格式 -->
+    <body-content>scriptless</body-content>
+  </tag>
+  
+  
+    
+  <tag>
+	<!-- 标签名 -->
+    <name>foreach</name>
+    <!-- 标签处理类 -->
+    <tag-class>com.wk.designTag.ForeachTag</tag-class>
+    <!-- 输出标签内容格式 -->
+    <body-content>scriptless</body-content>
+    <attribute>
+    	<name>items</name>
+    	<!-- 支持属性 -->
+    	<required>true</required>
+    	<!-- 支持EL表达式 -->
+    	<rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+    	<name>var</name>
+    	<required>true</required>
+    	<rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
+  
+ </taglib>

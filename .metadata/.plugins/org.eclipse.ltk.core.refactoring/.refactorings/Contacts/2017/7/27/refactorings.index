@@ -1,0 +1,13 @@
+1499413225430	Rename package 'com.wk.contack_web.dao.impl'
+1499413260729	Rename type 'Contack'
+1499413632590	Rename package 'com.wk.contack_web'
+1499413662601	Delete element
+1499413678468	Rename package 'com.wk.contack_web.dao'
+1499413691765	Rename package 'com.wk.contack_web.entity'
+1499413700745	Rename package 'com.wk.contack_web.servlet'
+1499413708612	Rename package 'com.wk.contack_web.test'
+1499413717316	Rename package 'com.wk.contack_web.util'
+1499413729775	Rename compilation unit 'ContackDao.java'
+1499413753891	Rename type 'ContackDaoImpl'
+1499413788195	Rename type 'Contack'
+1499417311911	Rename resource 'AddContact.jsp'

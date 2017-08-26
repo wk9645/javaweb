@@ -1,0 +1,17 @@
+package com.wk;
+
+import com.wk.entity.Student;
+import com.wk.service.StudentService;
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+		StudentService service = new StudentService();
+		
+		
+		service.register(new Student(13,"ะกร๗",45d));
+		
+	}
+	
+}

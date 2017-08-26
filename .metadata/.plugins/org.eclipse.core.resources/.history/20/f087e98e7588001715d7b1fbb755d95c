@@ -1,0 +1,14 @@
+package com.wk.dao;
+
+import com.wk.entity.Student;
+
+public class StudentDao {
+
+	
+	public void add(Student stu){
+		
+		
+	}
+	
+	
+}

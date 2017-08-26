@@ -1,0 +1,20 @@
+package com.wk.dao;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.wk.entity.Student;
+
+public class StudentDao {
+
+	private SqlSessionFactory sessionFactory;
+	public void setSessionFactory(SqlSessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	
+	public void add(Student stu){
+		
+		
+	}
+	
+	
+}

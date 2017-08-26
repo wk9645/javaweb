@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+          
+<struts>
+
+	<package name="hello" extends="struts-default">
+	
+		<!-- 拦截器配置 -->
+		<interceptors>
+			<!-- 配置自定义的拦截器 -->
+			<interceptor name="helloInterceptor" class="com.wk.interceptor.HelloInterceptor"></interceptor>
+		
+			<!-- 自定义一个栈：引用默认的栈和自定义的拦截器 -->
+			<interceptor-stack name="helloStack">
+			
+			<!-- 引用默认的栈，放在第一行 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			
+			<!-- 引用自定义的拦截器 -->
+			<interceptor-ref name="helloInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		
+		</interceptors>
+		
+		
+		
+		<!-- 执行拦截器，只需执行自定义的栈即可 -->
+		<default-interceptor-ref name="helloStack"></default-interceptor-ref>
+		
+		<!-- 配置Action -->
+		<action name="hello_*" class="com.wk.interceptor.HelloAction">
+			<result name="success">/success.jsp</result>
+		</action>
+	
+	</package>
+
+</struts>

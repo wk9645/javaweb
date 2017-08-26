@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd"
+     >
+     
+     <!-- set方法注入 -->
+     <!-- Dao instance
+     <bean id="userDao" class="com.wk.object_relationship.UserDao"></bean>
+     -->
+     <!-- Service instance
+     <bean id="userService" class="com.wk.object_relationship.UserService">
+     	<property name="userDao" ref="userDao"></property>
+     </bean>
+    -->
+    <!-- Action instance 
+    <bean id="userAction" class="com.wk.object_relationship.UserAction">
+    	<property name="userService" ref="userService"></property>
+    </bean>
+    -->
+    
+    
+  
+    
+    
+    <!-- 名称空间给对象赋值 -->
+
+     <!-- Dao instance
+     <bean id="userDao" class="com.wk.object_relationship.UserDao"></bean>
+     -->
+     <!-- Service instance
+     <bean id="userService" class="com.wk.object_relationship.UserService" p:userDao-ref="userDao">
+     </bean>
+    -->
+    <!-- Action instance
+    <bean id="userAction1" class="com.wk.object_relationship.UserAction" p:userService-ref="userService">
+    </bean>
+    -->
+     
+     <!-- 自动装备 -->
+     
+      <!-- Dao instance 
+     <bean id="userDao" class="com.wk.object_relationship.UserDao"></bean>
+   	 -->
+     <!-- Service instance 
+     <bean id="userService" class="com.wk.object_relationship.UserService">
+     </bean>
+    -->
+    <!-- Action instance 
+    <bean id="userAction2" class="com.wk.object_relationship.UserAction" autowire="byName">
+    </bean>
+    -->
+    <!-- 添加注解 -->
+	    
+	 
+	<bean id="userAction3" class="com.wk.object_relationship.UserAction"></bean>
+ </beans>

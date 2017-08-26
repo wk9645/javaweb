@@ -1,0 +1,49 @@
+package com.wk.jdbc_dbutils;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.ResultSetHandler;
+import org.junit.Test;
+
+import com.wk.entity.Admin;
+import com.wk.jdbc_util.JdbcUtil;
+
+public class DbUtils_query {
+	
+	private Connection conn;
+	
+	/*
+	 * 查询方法
+	 * 
+	 */
+	
+	
+	
+	//自定义结果集封装数据
+	
+	@Test
+	public void testQuery(){
+		
+		String sql = "select *from admin where id=? ";
+		
+		conn = JdbcUtil.getConnection();
+		
+		QueryRunner qr = new QueryRunner();
+		
+		qr.query(conn, sql, new ResultSetHandler<Admin>(Admin.class) {
+
+			@Override
+			public Admin handle(ResultSet arg0) throws SQLException {
+				return null;
+			}
+
+		},5);
+		
+	}
+	
+	
+}
+

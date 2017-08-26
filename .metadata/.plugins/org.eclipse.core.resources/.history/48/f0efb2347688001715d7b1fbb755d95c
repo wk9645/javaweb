@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+	<!-- hibernate映射关系 -->
+	<!-- 对象所在包 -->
+<hibernate-mapping package="com.wk.entity">
+
+	<!-- 对象名和数据表名 -->
+	<class name="Student" table="student">
+	   
+	   	<!-- 主键映射 -->
+		<id name="id" column="id">
+			<generator class="native"/>
+		</id>
+		
+		<!-- 非主键映射 -->
+		<property name="name" column="name"/>
+		<property name="sal" column="sal"/>
+     
+	</class>
+</hibernate-mapping>

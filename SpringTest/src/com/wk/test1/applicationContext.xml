@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd"
+     >
+	
+	<!-- IOC容器配置，所有的对象都要在这里配置 -->
+
+	<!-- 1、默认创建为无参构造器 
+	<bean id="user1" class="com.wk.test1.User" ></bean>
+	-->
+	<!-- 2、有参构造器创建 
+	<bean id="user2" class="com.wk.test1.User">
+		<constructor-arg index="0" type="int" value="1"></constructor-arg>
+		<constructor-arg index="1" type="java.lang.String" value="张三"></constructor-arg>
+	</bean>
+	-->
+	
+	<!-- 定义一个字符串 
+	<bean id="str" class="java.lang.String">
+		<constructor-arg value="jack"></constructor-arg>
+	</bean>
+	<bean id="user3" class="com.wk.test1.User">
+		<constructor-arg index="0" type="int" value="1"></constructor-arg>
+		<constructor-arg index="1" type="java.lang.String" ref="str"></constructor-arg>
+	</bean>
+	-->
+	
+	<!-- 3、使用工厂类创建对象 -->
+	<!-- (1)实例方法 -->
+	<!-- 先创建工厂 -->
+	<bean id="factory" class="com.wk.test1.ObjectFactory"></bean>
+	<!-- 再创建实例方法 -->
+	<bean id="user4" factory-bean="factory" factory-method="getInstance"></bean>
+	
+	<!-- (2)静态方法 -->
+	<bean id="user5" class="com.wk.test1.ObjectFactory" factory-method="getStaticInstance"></bean>
+</beans>   

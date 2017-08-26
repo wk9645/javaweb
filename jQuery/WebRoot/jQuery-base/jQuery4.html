@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery1.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	
+	<!--jquery库 -->
+  <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+  
+  </head>
+  
+  <body>
+	<table border="1">
+	  <tr>
+	  	<td>A1</td><td>A2</td><td>A3</td>
+	  </tr>
+	  <tr>
+	  	<td>B1</td><td>B2</td><td>B3</td>
+	  </tr>
+	  <tr>
+	  	<td>C1</td><td>C2</td><td>C3</td>
+	  </tr>
+	  <tr>
+	  	<td>D1</td><td>D2</td><td>D3</td>
+	  </tr>
+	  <tr>
+	  	<td colspan="2" align="center">
+	  		<input type="button" value="测试" onclick="myclick()"/>
+	  	</td>
+	  </tr>
+	 
+	</table>	
+	
+	
+
+  		
+  		<script type="text/javascript">
+  		
+  			function myclick(){
+  			
+  				var $trs = $("table tr:even:not(:has(input))");
+  				$trs.each(function(){
+  					
+  					alert( $(this).text() );
+  				});
+  				
+  			}
+  		
+  		</script>
+  
+  		<script type="text/javascript">
+  		
+  			/* function myclick(){
+  			
+  				var $trs = $("table tr:even:not(:has(input))");
+  				$trs.each(function(){
+  					
+  					var $tds = $(this).children();
+  					$tds.each(function(){
+  						alert( $(this).text() );
+  					});
+  				});
+  				
+  			} */
+  		
+  		</script>
+  
+  
+  </body>
+</html>
